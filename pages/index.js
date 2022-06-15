@@ -5,7 +5,7 @@ import Result from '../components/Result'
 import requests from '../utils/requests'
 
 export default function Home({results}) {
-  // console.log(results);
+  console.log(results);
   return (
     <div >
       <Head>
@@ -28,8 +28,10 @@ export default function Home({results}) {
 export async function getServerSideProps(context){
   const genre=context.query.genre || 'fetchTrending';
   const request=await fetch(`https://api.themoviedb.org/3${requests[genre].url}`)
+
   .then(response=>response.json())
   // .then(data=>console.log(data))
+  
   return{
     props:{
       results:request.results
